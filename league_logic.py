@@ -8,6 +8,16 @@ def parse_line(line):
         team1_score, team2_score = line.strip().split(", ")
         team1, score1 = team1_score.rsplit(" ", 1)
         team2, score2 = team2_score.rsplit(" ", 1)
+
+        if (team1 == team2):
+            raise ValueError("Teams cannot play against themselves")
+
+        if (not score1.isdigit() or not score2.isdigit()):
+            raise ValueError("Scores must be integers")
+
+        if (int(score1) < 0 or int(score2) < 0):
+            raise ValueError("Scores cannot be negative")
+
         return team1, int(score1), team2, int(score2)
     except ValueError:
         raise ValueError("Invalid input format. Use: 'TeamA 1, TeamB 2'")
