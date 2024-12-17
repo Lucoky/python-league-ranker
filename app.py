@@ -30,8 +30,9 @@ def main():
                     # Validate input format
                     try:
                         parse_line(line)
-                    except ValueError:
-                        print("Invalid input format, please re-enter (e.g., 'TeamA 1, TeamB 2').")
+                    except ValueError as e:
+                        print(f"Error: {e}")
+                        print("Please try again.")
                         # Skip invalid input
                         continue
 
