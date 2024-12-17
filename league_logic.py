@@ -45,6 +45,15 @@ def display_rankings(team_points):
     Displays the team rankings.
     """
     rank = 1
-    for team, points in team_points:
-        print(f"{rank}. {team}, {points} pts")
+    prev_points = None
+    displayed_rank = 1
+
+    for i, (team, points) in enumerate(team_points):
+        # If the current points are the same as the previous, keep the rank the same
+        if points != prev_points:
+            displayed_rank = rank
+
+        print(f"{displayed_rank}. {team}, {points} pts")
+
+        prev_points = points
         rank += 1
